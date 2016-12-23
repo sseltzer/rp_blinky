@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .row.callout.primary.expanded
+    .columns.small-12.medium-8.large-6.small-centered
+      .row
+        h1.text-center #{title}
+      .row
+        .columns
+          .button-group.expanded
+            a.button#on on
+            a.button#off off
+            a.button#blink blink
+  style.
+    @media only screen and (max-width: 40em) {
+      h1 {font-size: 3rem;}
+    }
+
+  script.
+    $(document).ready(function() {
+      $('#on').on('click', function() { $.ajax('/on'); });
+      $('#off').on('click', function() { $.ajax('/off'); });
+      $('#blink').on('click', function() { $.ajax('/blink'); });
+    });    
